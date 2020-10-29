@@ -11,12 +11,12 @@
 This is a Gatsby example of how you can display groups of image the 'gatsby-way' (using gatsby-image and graphql queries).
 
 ## 📝Requirements
-  `nodejs`
-  A 'bash-style' shell
+ - `node`
+ - A 'bash-style' shell is highly recommended.
 
 
 ## 🚀 TL;DR
-All in one shot: Clone, setup and run the project for the first time.
+All in one shot: clone, setup and run the project for the first time.
 - Using `yarn`
 	- 
   ```bash
@@ -36,12 +36,32 @@ All in one shot: Clone, setup and run the project for the first time.
     git clone https://github.com/apolopena/gatsby-image-grouping-example.git
     ```
 
-1.  **Start developing.**
 
-    Navigate into the projects directory and start it up.
+1.  **Navigate into the projects directory**
 
     ```shell
     cd gatsby-image-grouping-example/
+    ```
+
+1.  **Install Dependencies.**
+
+    Using `yarn`
+
+    ```shell
+    yarn install
+    ```
+
+    Using `npm`
+
+    ```shell
+    npm install
+    ```
+
+1.  **Start developing.**
+
+    Build and run the development version of gatsby.
+
+    ```shell
     gatsby develop
     ```
 
