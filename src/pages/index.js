@@ -33,10 +33,12 @@ const IndexPage = () => {
   const people = data.allFile.edges.reduce((acc, val, i) => {
     const fluid = val.node.childImageSharp.fluid
     const person = getPersonName(fluid.originalName)
-    const data = {fileName: fluid.originalName, fluid}
-    !acc[person]
-      && (acc[person] = [data])
-      || acc[person].push(data)
+    const result = {fileName: fluid.originalName, fluid}
+    
+    acc[person]
+      ? acc[person].push(result)
+      : acc[person] = [result]
+
     return { ...acc }
   }, {})
 
