@@ -34,8 +34,9 @@ const IndexPage = () => {
     const fluid = val.node.childImageSharp.fluid
     const person = getPersonName(fluid.originalName)
     const data = {fileName: fluid.originalName, fluid}
-    !acc[person] && (acc[person] = [data])
-    acc[person].push(data)
+    !acc[person]
+      && (acc[person] = [data])
+      || acc[person].push(data)
     return { ...acc }
   }, {})
 
