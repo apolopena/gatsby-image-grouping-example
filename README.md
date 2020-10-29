@@ -26,7 +26,6 @@ All in one shot: Clone, setup and run the project for the first time.
 	- 
   ```bash
   git clone https://github.com/apolopena/gatsby-image-grouping-example.git && cd gatsby-image-grouping-example && npm install && gatsby develop
-```
 
 
 ## 👣 Step by step initial setup
