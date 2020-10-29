@@ -34,12 +34,9 @@ const IndexPage = () => {
     const fluid = val.node.childImageSharp.fluid
     const person = getPersonName(fluid.originalName)
     const data = {fileName: fluid.originalName, fluid}
-    if (!acc[person]) {
-      acc[person] = [data]
-    } else {
-      acc[person].push(data)
-    }
-    return {...acc}
+    !acc[person] && (acc[person] = [data])
+    acc[person].push(data)
+    return { ...acc }
   }, {})
 
   const layout = []
