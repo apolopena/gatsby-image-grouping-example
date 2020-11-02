@@ -59,8 +59,8 @@ const IndexPage = () => {
   }, {})
 
   const people = sortImages(unsortedPeople)
-
   const layout = []
+  
   for (const value of Object.values(people)) {
     value.forEach((item, i, arr) => {
       const name = getPersonName(item.fileName)
@@ -69,7 +69,10 @@ const IndexPage = () => {
         <Img 
           key={item.fileName}
           fluid={item.fluid} 
-          style={{border: '1px solid indianred', marginBottom: '.2rem'}}>
+          style={{
+            border: '1px solid indianred',
+            marginBottom: '.2rem'
+          }}>
         </Img>
       )
     })
