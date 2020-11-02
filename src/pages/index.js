@@ -30,7 +30,23 @@ const IndexPage = () => {
 
   const getPersonName = (fileName) => fileName.split('.')[0].replace(/[0-9]/g, '')
 
-  const people = data.allFile.edges.reduce((acc, val, i) => {
+  const sortImages = (obj) => {
+    const numR = new RegExp(/(\d+)/)
+    const ascending = (a, b) => {
+      const _a = Number(a.fileName.match(numR)[0])
+      const _b = Number(b.fileName.match(numR)[0])
+      if (_a < _b) return -1
+      return (_a > _b) ? 1 : 0
+    }
+    let result = {}
+    for (const key in obj) {
+      let val = [...obj[key]]
+      result[key] = val.sort(ascending)
+    }
+    return result
+  }
+
+  const unsortedPeople = data.allFile.edges.reduce((acc, val, i) => {
     const fluid = val.node.childImageSharp.fluid
     const person = getPersonName(fluid.originalName)
     const result = {fileName: fluid.originalName, fluid}
@@ -42,15 +58,20 @@ const IndexPage = () => {
     return { ...acc }
   }, {})
 
-  const layout = []
+  const people = sortImages(unsortedPeople)
 
+  const layout = []
   for (const value of Object.values(people)) {
     value.forEach((item, i, arr) => {
       const name = getPersonName(item.fileName)
-
       if (i === 0) layout.push(<label key={name}><br /><h1>{name}</h1></label>)
-
-      layout.push(<Img key={item.fileName} fluid={item.fluid}></Img>)
+      layout.push(
+        <Img 
+          key={item.fileName}
+          fluid={item.fluid} 
+          style={{border: '1px solid indianred', marginBottom: '.2rem'}}>
+        </Img>
+      )
     })
   }
 
